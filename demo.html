@@ -19,12 +19,44 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        h1 {
+        h1, h2 {
             color: #333;
             text-align: center;
         }
         p {
             color: #666;
+        }
+        .teams-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .conference {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .conference h3 {
+            color: #444;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        li:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -33,6 +65,50 @@
         <h1>Welcome to the Demo Page</h1>
         <p>This is a simple demo page created as an example. You can modify this template to suit your needs.</p>
         <p>Feel free to add more content, styles, and functionality to make it your own!</p>
+        
+        <h2>NBA Teams</h2>
+        <div class="teams-container">
+            <div class="conference">
+                <h3>Eastern Conference</h3>
+                <ul>
+                    <li>Boston Celtics</li>
+                    <li>Brooklyn Nets</li>
+                    <li>New York Knicks</li>
+                    <li>Philadelphia 76ers</li>
+                    <li>Toronto Raptors</li>
+                    <li>Chicago Bulls</li>
+                    <li>Cleveland Cavaliers</li>
+                    <li>Detroit Pistons</li>
+                    <li>Indiana Pacers</li>
+                    <li>Milwaukee Bucks</li>
+                    <li>Atlanta Hawks</li>
+                    <li>Charlotte Hornets</li>
+                    <li>Miami Heat</li>
+                    <li>Orlando Magic</li>
+                    <li>Washington Wizards</li>
+                </ul>
+            </div>
+            <div class="conference">
+                <h3>Western Conference</h3>
+                <ul>
+                    <li>Denver Nuggets</li>
+                    <li>Minnesota Timberwolves</li>
+                    <li>Oklahoma City Thunder</li>
+                    <li>Portland Trail Blazers</li>
+                    <li>Utah Jazz</li>
+                    <li>Golden State Warriors</li>
+                    <li>LA Clippers</li>
+                    <li>Los Angeles Lakers</li>
+                    <li>Phoenix Suns</li>
+                    <li>Sacramento Kings</li>
+                    <li>Dallas Mavericks</li>
+                    <li>Houston Rockets</li>
+                    <li>Memphis Grizzlies</li>
+                    <li>New Orleans Pelicans</li>
+                    <li>San Antonio Spurs</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
