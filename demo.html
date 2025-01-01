@@ -4,90 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Page</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        .card {
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-        }
-        .card:hover {
-            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        }
-        .team-item {
-            position: relative;
-            padding: 0.75rem;
-            transition: all 0.2s ease;
-        }
-        .team-item:hover {
-            background-color: #f3f4f6;
-        }
-        .team-item:hover .view-button {
-            opacity: 1;
-        }
-        .view-button {
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            padding: 0.25rem 0.75rem;
-            background-color: #e5e7eb;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-        }
-        .view-button:hover {
-            background-color: #d1d5db;
-        }
-        .separator {
-            height: 1px;
-            background-color: #e5e7eb;
-            margin: 0.5rem 0;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 p-6">
-    <div class="max-w-4xl mx-auto card p-6">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold mb-4">Welcome to the Demo Page</h1>
-            <p class="text-gray-500 mb-2">
-                This is a simple demo page created as an example. You can modify this template to suit your needs.
-            </p>
-            <p class="text-gray-500">
-                Feel free to add more content, styles, and functionality to make it your own!
-            </p>
-        </div>
+<body class="bg-light py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h1 class="text-center mb-4">Welcome to the Demo Page</h1>
+                        <p class="text-muted text-center mb-2">
+                            This is a simple demo page created as an example. You can modify this template to suit your needs.
+                        </p>
+                        <p class="text-muted text-center mb-5">
+                            Feel free to add more content, styles, and functionality to make it your own!
+                        </p>
 
-        <h2 class="text-2xl font-semibold text-center mb-6">NBA Teams</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Eastern Conference -->
-            <div class="card p-4">
-                <h3 class="text-xl font-semibold text-center mb-4">Eastern Conference</h3>
-                <div class="overflow-y-auto" style="max-height: 400px;">
-                    <div class="space-y-1">
-                        <div class="team-item flex justify-between items-center">
-                            <span>Boston Celtics</span>
-                            <button class="view-button">View</button>
-                        </div>
-                        <div class="separator"></div>
-                        <!-- Repeat for other Eastern teams -->
-                    </div>
-                </div>
-            </div>
+                        <h2 class="text-center mb-4">NBA Teams</h2>
+                        <div class="row g-4">
+                            <!-- Eastern Conference -->
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header bg-primary text-white">
+                                        <h3 class="card-title h5 text-center mb-0">Eastern Conference</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <a href="#" class="list-group-item list-group-item-action">Boston Celtics</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Brooklyn Nets</a>
+                                            <a href="#" class="list-group-item list-group-item-action">New York Knicks</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Philadelphia 76ers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Toronto Raptors</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Chicago Bulls</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Cleveland Cavaliers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Detroit Pistons</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Indiana Pacers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Milwaukee Bucks</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Atlanta Hawks</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Charlotte Hornets</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Miami Heat</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Orlando Magic</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Washington Wizards</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- Western Conference -->
-            <div class="card p-4">
-                <h3 class="text-xl font-semibold text-center mb-4">Western Conference</h3>
-                <div class="overflow-y-auto" style="max-height: 400px;">
-                    <div class="space-y-1">
-                        <div class="team-item flex justify-between items-center">
-                            <span>Denver Nuggets</span>
-                            <button class="view-button">View</button>
+                            <!-- Western Conference -->
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header bg-danger text-white">
+                                        <h3 class="card-title h5 text-center mb-0">Western Conference</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            <a href="#" class="list-group-item list-group-item-action">Denver Nuggets</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Minnesota Timberwolves</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Oklahoma City Thunder</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Portland Trail Blazers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Utah Jazz</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Golden State Warriors</a>
+                                            <a href="#" class="list-group-item list-group-item-action">LA Clippers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Los Angeles Lakers</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Phoenix Suns</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Sacramento Kings</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Dallas Mavericks</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Houston Rockets</a>
+                                            <a href="#" class="list-group-item list-group-item-action">Memphis Grizzlies</a>
+                                            <a href="#" class="list-group-item list-group-item-action">New Orleans Pelicans</a>
+                                            <a href="#" class="list-group-item list-group-item-action">San Antonio Spurs</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="separator"></div>
-                        <!-- Repeat for other Western teams -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
