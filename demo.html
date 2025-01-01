@@ -6,6 +6,23 @@
     <title>Demo Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .draggable-item {
+            cursor: move;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+        .draggable-item:hover {
+            background-color: #f8f9fa;
+        }
+        .dragging {
+            opacity: 0.5;
+            background-color: #e9ecef;
+        }
+        .drop-target {
+            background-color: #e9ecef;
+        }
+    </style>
 </head>
 <body class="bg-light py-4">
     <div class="container">
@@ -31,6 +48,7 @@
                             </svg>
                             <h2 class="mb-0">NBA Teams</h2>
                         </div>
+                        <p class="text-center text-muted mb-4">Drag and drop teams to reorder them</p>
 
                         <div class="row g-4">
                             <!-- Eastern Conference -->
@@ -40,23 +58,8 @@
                                         <h3 class="card-title h5 text-center mb-0">Eastern Conference</h3>
                                     </div>
                                     <div class="card-body">
-                                        <div class="list-group list-group-flush">
-                                            <a href="#" class="list-group-item list-group-item-action">Boston Celtics</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Brooklyn Nets</a>
-                                            <a href="#" class="list-group-item list-group-item-action">New York Knicks</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Philadelphia 76ers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Toronto Raptors</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Chicago Bulls</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Cleveland Cavaliers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Detroit Pistons</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Indiana Pacers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Milwaukee Bucks</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Atlanta Hawks</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Charlotte Hornets</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Miami Heat</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Orlando Magic</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Washington Wizards</a>
-                                        </div>
+                                        <ul class="list-group list-group-flush" id="eastern-conference">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -68,23 +71,8 @@
                                         <h3 class="card-title h5 text-center mb-0">Western Conference</h3>
                                     </div>
                                     <div class="card-body">
-                                        <div class="list-group list-group-flush">
-                                            <a href="#" class="list-group-item list-group-item-action">Denver Nuggets</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Minnesota Timberwolves</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Oklahoma City Thunder</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Portland Trail Blazers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Utah Jazz</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Golden State Warriors</a>
-                                            <a href="#" class="list-group-item list-group-item-action">LA Clippers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Los Angeles Lakers</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Phoenix Suns</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Sacramento Kings</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Dallas Mavericks</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Houston Rockets</a>
-                                            <a href="#" class="list-group-item list-group-item-action">Memphis Grizzlies</a>
-                                            <a href="#" class="list-group-item list-group-item-action">New Orleans Pelicans</a>
-                                            <a href="#" class="list-group-item list-group-item-action">San Antonio Spurs</a>
-                                        </div>
+                                        <ul class="list-group list-group-flush" id="western-conference">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -97,5 +85,80 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const easternTeams = [
+            "Boston Celtics", "Brooklyn Nets", "New York Knicks",
+            "Philadelphia 76ers", "Toronto Raptors", "Chicago Bulls",
+            "Cleveland Cavaliers", "Detroit Pistons", "Indiana Pacers",
+            "Milwaukee Bucks", "Atlanta Hawks", "Charlotte Hornets",
+            "Miami Heat", "Orlando Magic", "Washington Wizards"
+        ];
+
+        const westernTeams = [
+            "Denver Nuggets", "Minnesota Timberwolves", "Oklahoma City Thunder",
+            "Portland Trail Blazers", "Utah Jazz", "Golden State Warriors",
+            "LA Clippers", "Los Angeles Lakers", "Phoenix Suns",
+            "Sacramento Kings", "Dallas Mavericks", "Houston Rockets",
+            "Memphis Grizzlies", "New Orleans Pelicans", "San Antonio Spurs"
+        ];
+
+        function createTeamItem(team) {
+            const li = document.createElement('li');
+            li.className = 'list-group-item draggable-item';
+            li.draggable = true;
+            li.textContent = team;
+            
+            li.addEventListener('dragstart', function(e) {
+                e.target.classList.add('dragging');
+                e.dataTransfer.setData('text/plain', team);
+            });
+            
+            li.addEventListener('dragend', function(e) {
+                e.target.classList.remove('dragging');
+            });
+            
+            return li;
+        }
+
+        function initializeList(containerId, teams) {
+            const container = document.getElementById(containerId);
+            teams.forEach(team => {
+                container.appendChild(createTeamItem(team));
+            });
+
+            container.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const dragging = document.querySelector('.dragging');
+                const afterElement = getDragAfterElement(container, e.clientY);
+                if (afterElement) {
+                    container.insertBefore(dragging, afterElement);
+                } else {
+                    container.appendChild(dragging);
+                }
+            });
+        }
+
+        function getDragAfterElement(container, y) {
+            const draggableElements = [...container.querySelectorAll('.draggable-item:not(.dragging)')];
+            
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        // Initialize both conferences
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeList('eastern-conference', easternTeams);
+            initializeList('western-conference', westernTeams);
+        });
+    </script>
 </body>
 </html>
